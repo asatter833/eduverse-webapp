@@ -7,7 +7,7 @@ export const useCurrentUser = () => {
   return useQuery({
     queryKey: ["current-user"],
     queryFn: () => {
-      return instance.get("user/profile/");
+      return instance.get("users/profile/");
     },
   });
 };

@@ -7,19 +7,21 @@ const handleResponse = async (
   data?: any;
   message?: string;
   response?: any;
+  token?: any;
 }> => {
   const accept = responseCodes || 200;
   try {
     const res = await func();
     if (
       res.status === accept ||
-      (typeof accept === 'object' && accept.includes(res.status))
+      (typeof accept === "object" && accept.includes(res.status))
     ) {
       return {
         status: true,
         data: res.data?.data || res?.data,
         message: res.data?.message || res.data?.detail,
         response: res.data,
+        token: res.token,
       };
     } else {
       return {
@@ -29,7 +31,7 @@ const handleResponse = async (
           res.data?.message ||
           res.data?.detail ||
           res.data?.Error?.[0] ||
-          'Something went wrong',
+          "Something went wrong",
       };
     }
   } catch (err: any) {
@@ -44,7 +46,7 @@ const handleResponse = async (
           message:
             err.response.data?.message ||
             err.response.data?.detail ||
-            'Unverified to complete the task',
+            "Unverified to complete the task",
           data: err.response.data,
         };
       else {
@@ -56,13 +58,13 @@ const handleResponse = async (
             err.response.data?.detail ||
             err.response?.data?.Error?.[0] ||
             err.response?.data?.[Object.keys(err.response?.data)?.[0]]?.[0] ||
-            'Something went wrong',
+            "Something went wrong",
         };
       }
     } else {
       return {
         status: false,
-        message: 'Something went wrong',
+        message: "Something went wrong",
       };
     }
   }
