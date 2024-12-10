@@ -1,7 +1,11 @@
-export default function DashboardPage() {
+import Loading from "@/app/_components/loading";
+
+export default function AdminPage() {
   return (
-    <div>
-      <h1>Admin Dashboard</h1>
-    </div>
+    <main className="flex min-h-screen flex-row items-center justify-center bg-slate-100">
+      <div className="mx-auto w-full max-w-sm">
+        <Loading />
+      </div>
+    </main>
   );
 }

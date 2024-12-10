@@ -10,7 +10,7 @@ export default function PrivateLayout({
   // Check if the user is logged in
   const token = cookies().get("access_token")?.value;
   if (!token) {
-    redirect("/app", RedirectType.replace);
+    redirect("/", RedirectType.replace);
   }
 
   return (
