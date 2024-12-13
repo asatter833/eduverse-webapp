@@ -10,6 +10,7 @@ const RoleChecker = ({
   children: React.ReactNode;
 }>) => {
   const { user } = useUser();
+  console.log(user);
 
   const router = useRouter();
   const pathname = usePathname();
